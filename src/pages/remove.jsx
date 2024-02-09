@@ -1,8 +1,11 @@
 import React from 'react'
+import { useSelector } from 'react-redux';
 import { Button,Table, TableBody, TableCell, TableHead, TableRow } from '@mui/material'
+import { selectAllTasks } from '../slice/slice';
 
 const Remove = () => {
-  const data = [1, 2, 3]
+  const allTasks = useSelector(selectAllTasks);
+  console.log(allTasks)
   return (
     <div>
       <button>Əlavə et</button>
@@ -12,7 +15,7 @@ const Remove = () => {
         <TableHead >
           <TableRow >
             <TableCell sx={{border: 1 }}>Məzmun</TableCell>
-            <TableCell sx={{border: 1 }}>	Əməliyyat tarixi</TableCell>
+            <TableCell sx={{border: 1 }}>Əməliyyat tarixi</TableCell>
             <TableCell sx={{border: 1 }}>Şirkət</TableCell>
             <TableCell sx={{border: 1 }}>Filial</TableCell>
             <TableCell sx={{border: 1 }}>Dəyiş</TableCell>
@@ -21,13 +24,13 @@ const Remove = () => {
         </TableHead>
         <TableBody>
           {
-            data.map((item)=>(
+            allTasks.map((item)=>(
               
           <TableRow >
-            <TableCell sx={{border: 1 }}>2334 N-li alış sənədi</TableCell>
-            <TableCell sx={{border: 1 }}>02.02.2024</TableCell>
-            <TableCell sx={{border: 1 }}>Tac MMC</TableCell>
-            <TableCell sx={{border: 1 }}></TableCell>
+            <TableCell sx={{border: 1 }}>{item.content}</TableCell>
+            <TableCell sx={{border: 1 }}>{item.date}</TableCell>
+            <TableCell sx={{border: 1 }}>{item.company}</TableCell>
+            <TableCell sx={{border: 1 }}>{item.branch}</TableCell>
             <TableCell sx={{border: 1 }}>
               <Button variant='contained' color='primary' size='small'>
                 Dəyiş
